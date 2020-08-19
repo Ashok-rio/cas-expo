@@ -1,11 +1,15 @@
+import 'react-native-gesture-handler';
 import React from 'react';
-import Routes from './routes/Nav';
+import GlobalContext from './src/services/GlobalContext';
+import Routes from './src/routes/Nav';
 
 
-const  App = () => {
+const App = () => {
   return (
-    <Routes />
+    <GlobalContext>
+      <Routes />
+    </GlobalContext>
   );
-}
+};
 
-export default App
+export default App;
