@@ -1,15 +1,18 @@
 import React from 'react';
+import {reducer} from './StateManagement';
 
-const State = { AppName: 'CAS',des:'College of Arts & Science' };
+const initialState = {};
 
-export const GlobalContext = React.createContext(State);
+export const GlobalContext = React.createContext({});
 
-export default ({children}) => {
-  const [globalState, setGlobalState] = React.useState(State);
+const Store = ({children}) => {
+  const [state, dispatch] = React.useReducer(reducer, initialState);
 
   return (
-    <GlobalContext.Provider value={[globalState, setGlobalState]}>
+    <GlobalContext.Provider value={{State: state, StateDispatch: dispatch}}>
       {children}
     </GlobalContext.Provider>
   );
 };
+
+export default Store;
